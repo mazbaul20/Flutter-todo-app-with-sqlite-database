@@ -30,4 +30,15 @@ class DatabaseHelper {
       onCreate: _createTable,
     );
   }//end method
+
+  Future<void> _createTable(Database db, int version) async {
+    await db.execute('''
+      CREATE TABLE todos (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        isCompleted INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+  }//end method
+
 }
